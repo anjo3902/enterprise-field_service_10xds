@@ -1,0 +1,17 @@
+{
+  "description": "Water leakage near compressor line and pressure drop observed",
+  "location": "Kochi, Kerala",
+  "contact": "9876543210",
+  "customer_name": "Integration Test User",
+  "customer_email": "integration.user@example.com",
+  "address_line1": "Test Building, Marine Drive",
+  "address_line2": "Floor 2",
+  "city": "Kochi",
+  "state": "Kerala",
+  "pincode": "682001",
+  "landmark": "Near Boat Jetty",
+  "fault_type": "burst_pipe",
+  "severity": "high",
+  "latitude": 9.9312,
+  "longitude": 76.2673
+}
