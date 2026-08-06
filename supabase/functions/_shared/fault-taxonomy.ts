@@ -1,0 +1,5 @@
+export const FaultTaxonomy = {
+  HVAC: ["AC_NOT_COOLING", "WATER_LEAK"],
+  PLUMBING: ["PIPE_BURST", "CLOGGED_DRAIN"],
+  ELECTRICAL: ["POWER_OUTAGE", "SHORT_CIRCUIT"]
+};

@@ -1,0 +1,36 @@
+# Virtual Environments & Dependencies
+**/venv/
+**/node_modules/
+
+# Caches & Build Outputs
+**/__pycache__/
+**/.mypy_cache/
+**/.pytest_cache/
+**/.ruff_cache/
+**/dist/
+**/.vite/
+**/.vite-temp/
+
+# Datasets & User Uploads
+**/dataset/
+**/uploads/
+**/*.csv
+
+# Test Reports
+**/test-results/
+**/playwright-report/
+
+# Logs & Large Text Files
+**/logs/
+**/*.log
+**/*.txt
+
+# Heavy Documents
+**/*.pdf
+
+# Security, Credentials, & Noise
+**/*.pem
+service-account.json
+**/.env
+**/package-lock.json
+

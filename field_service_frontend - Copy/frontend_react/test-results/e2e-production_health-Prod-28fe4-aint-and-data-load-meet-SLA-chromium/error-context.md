@@ -1,0 +1,127 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e6]:
+      - img [ref=e7]
+      - generic [ref=e11]:
+        - paragraph [ref=e12]: Field Service Platform
+        - heading "Admin Control Center" [level=1] [ref=e13]
+      - navigation [ref=e14]:
+        - link "Operations" [ref=e15] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=e16]
+          - generic [ref=e19]: Operations
+        - link "Activity" [ref=e20] [cursor=pointer]:
+          - /url: /admin/activity
+          - img [ref=e21]
+          - generic [ref=e23]: Activity
+      - generic [ref=e24]:
+        - generic [ref=e25]:
+          - paragraph [ref=e26]: Etwo Admin
+          - paragraph [ref=e27]: admin
+        - button "Logout" [ref=e28] [cursor=pointer]:
+          - img [ref=e29]
+          - generic [ref=e32]: Logout
+  - main [ref=e34]:
+    - generic [ref=e36]:
+      - generic [ref=e38]:
+        - heading "Admin Dashboard" [level=3] [ref=e39]
+        - paragraph [ref=e40]: Track service tickets and dispatch status
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - paragraph [ref=e43]: Operational Queue
+          - generic [ref=e44]: "3217"
+        - generic [ref=e45]:
+          - paragraph [ref=e46]: Pending HITL
+          - generic [ref=e47]: "0"
+        - generic [ref=e48]:
+          - paragraph [ref=e49]: Total Requests
+          - generic [ref=e50]: "3217"
+      - generic [ref=e51]:
+        - paragraph [ref=e52]: Operations tracking shows dispatch execution data. HITL review decisions are handled in the separate Activity tab.
+        - paragraph [ref=e53]: Customer Location is loaded directly from service request location data stored in the database.
+        - table [ref=e57]:
+          - rowgroup [ref=e58]:
+            - row "Ticket ID Priority Severity Technician Created At Status Actions" [ref=e59]:
+              - columnheader "Ticket ID" [ref=e60]
+              - columnheader "Priority" [ref=e61]
+              - columnheader "Severity" [ref=e62]
+              - columnheader "Technician" [ref=e63]
+              - columnheader "Created At" [ref=e64]
+              - columnheader "Status" [ref=e65]
+              - columnheader "Actions" [ref=e66]
+          - rowgroup [ref=e67]:
+            - 'row "541 Status: normal Status: medium Noufal Sajeev (ID: 137) 3/24/2026, 9:10:22 AM Status: completed View Details" [ref=e68]':
+              - cell "541" [ref=e69]
+              - 'cell "Status: normal" [ref=e70]':
+                - 'status "Status: normal" [ref=e71]': normal
+              - 'cell "Status: medium" [ref=e72]':
+                - 'status "Status: medium" [ref=e73]': medium
+              - 'cell "Noufal Sajeev (ID: 137)" [ref=e74]'
+              - cell "3/24/2026, 9:10:22 AM" [ref=e75]
+              - 'cell "Status: completed" [ref=e76]':
+                - 'status "Status: completed" [ref=e77]': completed
+              - cell "View Details" [ref=e78]:
+                - button "View Details" [ref=e79] [cursor=pointer]:
+                  - img [ref=e80]
+                  - text: View Details
+            - 'row "21 Status: normal Status: critical Dileep Moideen (ID: 32) 3/29/2026, 3:07:07 PM Status: completed View Details" [ref=e83]':
+              - cell "21" [ref=e84]
+              - 'cell "Status: normal" [ref=e85]':
+                - 'status "Status: normal" [ref=e86]': normal
+              - 'cell "Status: critical" [ref=e87]':
+                - 'status "Status: critical" [ref=e88]': critical
+              - 'cell "Dileep Moideen (ID: 32)" [ref=e89]'
+              - cell "3/29/2026, 3:07:07 PM" [ref=e90]
+              - 'cell "Status: completed" [ref=e91]':
+                - 'status "Status: completed" [ref=e92]': completed
+              - cell "View Details" [ref=e93]:
+                - button "View Details" [ref=e94] [cursor=pointer]:
+                  - img [ref=e95]
+                  - text: View Details
+            - 'row "987 Status: normal Status: medium Aravind Rafeeq (ID: 264) 3/24/2026, 4:51:22 PM Status: completed View Details" [ref=e98]':
+              - cell "987" [ref=e99]
+              - 'cell "Status: normal" [ref=e100]':
+                - 'status "Status: normal" [ref=e101]': normal
+              - 'cell "Status: medium" [ref=e102]':
+                - 'status "Status: medium" [ref=e103]': medium
+              - 'cell "Aravind Rafeeq (ID: 264)" [ref=e104]'
+              - cell "3/24/2026, 4:51:22 PM" [ref=e105]
+              - 'cell "Status: completed" [ref=e106]':
+                - 'status "Status: completed" [ref=e107]': completed
+              - cell "View Details" [ref=e108]:
+                - button "View Details" [ref=e109] [cursor=pointer]:
+                  - img [ref=e110]
+                  - text: View Details
+            - 'row "962 Status: normal Status: medium Lijin Kumar (ID: 260) 3/24/2026, 6:42:22 PM Status: completed View Details" [ref=e113]':
+              - cell "962" [ref=e114]
+              - 'cell "Status: normal" [ref=e115]':
+                - 'status "Status: normal" [ref=e116]': normal
+              - 'cell "Status: medium" [ref=e117]':
+                - 'status "Status: medium" [ref=e118]': medium
+              - 'cell "Lijin Kumar (ID: 260)" [ref=e119]'
+              - cell "3/24/2026, 6:42:22 PM" [ref=e120]
+              - 'cell "Status: completed" [ref=e121]':
+                - 'status "Status: completed" [ref=e122]': completed
+              - cell "View Details" [ref=e123]:
+                - button "View Details" [ref=e124] [cursor=pointer]:
+                  - img [ref=e125]
+                  - text: View Details
+            - 'row "960 Status: normal Status: critical Niyas Sajeev (ID: 257) 3/24/2026, 10:51:22 AM Status: completed View Details" [ref=e128]':
+              - cell "960" [ref=e129]
+              - 'cell "Status: normal" [ref=e130]':
+                - 'status "Status: normal" [ref=e131]': normal
+              - 'cell "Status: critical" [ref=e132]':
+                - 'status "Status: critical" [ref=e133]': critical
+              - 'cell "Niyas Sajeev (ID: 257)" [ref=e134]'
+              - cell "3/24/2026, 10:51:22 AM" [ref=e135]
+              - 'cell "Status: completed" [ref=e136]':
+                - 'status "Status: completed" [ref=e137]': completed
+              - cell "View Details" [ref=e138]:
+                - button "View Details" [ref=e139] [cursor=pointer]:
+                  - img [ref=e140]
+                  - text: View Details
+        - button "Load More Tickets" [ref=e144] [cursor=pointer]
+```

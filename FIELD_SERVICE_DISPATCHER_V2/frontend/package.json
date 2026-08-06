@@ -1,0 +1,45 @@
+{
+  "name": "field-service-diagnosis-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint \"src/**/*.{js,jsx}\" --max-warnings=0",
+    "lint:fix": "npm run lint -- --fix",
+    "test:e2e": "npx playwright test",
+    "test:safe": "npx playwright test --max-failures=1",
+    "test:e2e:report": "npx playwright test --reporter=html && npx playwright show-report"
+  },
+  "dependencies": {
+    "@sentry/react": "^10.49.0",
+    "axios": "^1.6.2",
+    "framer-motion": "^10.16.5",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^0.294.0",
+    "qrcode.react": "^4.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.48.2",
+    "react-leaflet": "^4.2.1",
+    "react-router-dom": "^6.26.2",
+    "react-window": "^2.2.7",
+    "swr": "^2.4.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.26.0",
+    "@playwright/test": "^1.58.2",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^9.26.0",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.0.0",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.3.6",
+    "vite": "^6.2.0"
+  }
+}

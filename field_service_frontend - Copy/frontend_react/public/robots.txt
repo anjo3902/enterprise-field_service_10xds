@@ -1,0 +1,4 @@
+# Field Service Platform — internal SaaS application
+# Block all crawlers (defense-in-depth alongside <meta name="robots">)
+User-agent: *
+Disallow: /

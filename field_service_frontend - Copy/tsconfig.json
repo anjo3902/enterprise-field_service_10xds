@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "esModuleInterop": true,
+    "jsx": "react-native",
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "customConditions": [
+      "react-native"
+    ],
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "target": "ESNext",
+    "strict": true
+  },
+  "include": [
+    "field_service_mobile/**/*.ts",
+    "field_service_mobile/**/*.tsx",
+    "field_service_mobile/.expo/types/**/*.ts",
+    "field_service_mobile/expo-env.d.ts"
+  ],
+  "extends": "expo/tsconfig.base"
+}

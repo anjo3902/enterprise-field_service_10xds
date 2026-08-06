@@ -1,0 +1,45 @@
+src\app\components\AnalyticsScreen.tsx:49 -> <button type="button" style={{display:"inline-flex",alignItems:"center",gap:"5px",background:"rgba(255,255,255,0.15)",border:"1px solid rgba(255,255,255,0.25)",borderRadius:"10px",padding:"6px 12px 6px 9px",cursor:"pointer",fontSize:"12.5px",fontWeight:600,color:"white",fontFamily:inter}} onClick={() => handleBackNavigation(navigate, '/dashboard')}><ArrowLeft size={15} color="white"/>Back</button>
+src\app\components\AssetDashboard.tsx:93 -> }} onClick={() => handleBackNavigation(navigate, '/dashboard')}>
+src\app\components\AssetDashboard.tsx:170 -> onClick={() => navigate('/assets/search')}
+src\app\components\AssetDashboard.tsx:177 -> <button type="button" onClick={() => navigate('/assets/filters')} style={{
+src\app\components\AssetDashboard.tsx:346 -> <div onClick={() => navigate('/assets/details')} style={{
+src\app\components\AssetDashboard.tsx:391 -> <div onClick={() => navigate('/assets/details')} style={{
+src\app\components\AssetDashboard.tsx:431 -> <div onClick={() => navigate('/assets/details')} style={{ display: "flex", gap: "12px", paddingBottom: last ? 0 : "14px", cursor: "pointer" }}>
+src\app\components\AssetDashboard.tsx:521 -> <Sect title="Asset Categories" action="View All" onAction={() => navigate('/assets/listing')} />
+src\app\components\AssetDashboard.tsx:533 -> <Sect title="Recent Activity" action="View All" onAction={() => navigate('/assets/history')} />
+src\app\components\AssetDetails.tsx:90 -> }} onClick={() => handleBackNavigation(navigate, '/assets')}>
+src\app\components\AssetDetails.tsx:460 -> onClick={() => navigate('/assets/history')}
+src\app\components\AssetFilters.tsx:111 -> }} onClick={() => handleBackNavigation(navigate, '/assets/search')}>
+src\app\components\AssetHistory.tsx:161 -> }} onClick={() => handleBackNavigation(navigate, '/assets/details')}>
+src\app\components\AssetListing.tsx:127 -> }} onClick={() => handleBackNavigation(navigate, '/assets')}>
+src\app\components\AssetListing.tsx:209 -> onFocus={() => { toggle(true); navigate('/assets/search'); }}
+src\app\components\AssetListing.tsx:217 -> <button type="button" onClick={() => navigate('/assets/filters')} style={{
+src\app\components\AssetListing.tsx:311 -> onClick={() => navigate('/assets/details')}
+src\app\components\AssetSearch.tsx:124 -> }} onClick={() => handleBackNavigation(navigate, '/assets')}>
+src\app\components\HealthScoreVisualization.tsx:90 -> <button type="button" style={{ display:"inline-flex", alignItems:"center", gap:"5px", background:"rgba(255,255,255,0.15)", border:"1px solid rgba(255,255,255,0.25)", borderRadius:"10px", padding:"6px 12px 6px 9px", cursor:"pointer", fontSize:"12.5px", fontWeight:600, color:"white", fontFamily:inter }} onClick={() => handleBackNavigation(navigate, '/machine-health')}>
+src\app\components\HomeDashboard.tsx:165 -> onClick={() => navigate('/assets/search')}
+src\app\components\HomeDashboard.tsx:258 -> onPointerUp={() => { setPressed(false); if (route) navigate(route); }}
+src\app\components\HomeDashboard.tsx:1395 -> {SRS.map((r) => <SRCard key={r.id} {...r} onClick={() => navigate('/my-tickets')} />)}
+src\app\components\HomeDashboard.tsx:1408 -> <MachineHealthCard {...MACHINES[0]} onClick={() => navigate('/machine-health')} />
+src\app\components\HomeDashboard.tsx:1409 -> <MachineHealthCard {...MACHINES[1]} onClick={() => navigate('/machine-health')} />
+src\app\components\HomeDashboard.tsx:1412 -> <MachineHealthCard {...MACHINES[2]} onClick={() => navigate('/machine-health')} />
+src\app\components\HomeDashboard.tsx:1413 -> <MachineHealthCard {...MACHINES[3]} onClick={() => navigate('/machine-health')} />
+src\app\components\LoginScreen.tsx:29 -> navigate("/dashboard");
+src\app\components\LoginScreen.tsx:395 -> onClick={() => navigate("/forgot-password")}
+src\app\components\LoginScreen.tsx:505 -> onClick={() => navigate("/register")}
+src\app\components\MachineHealthDashboard.tsx:142 -> }} onClick={() => handleBackNavigation(navigate, '/dashboard')}>
+src\app\components\MachineHealthDashboard.tsx:286 -> onClick={() => navigate('/machine-health/score')}
+src\app\components\MyTickets.tsx:158 -> <button type="button" style={{ display:"inline-flex",alignItems:"center",gap:"5px",background:"rgba(255,255,255,0.15)",border:"1px solid rgba(255,255,255,0.25)",borderRadius:"10px",padding:"6px 12px 6px 9px",cursor:"pointer",fontSize:"12.5px",fontWeight:600,color:"white",fontFamily:inter }} onClick={() => handleBackNavigation(navigate, '/dashboard')}>
+src\app\components\ReportsScreen.tsx:60 -> <button type="button" style={{display:"inline-flex",alignItems:"center",gap:"5px",background:"rgba(255,255,255,0.15)",border:"1px solid rgba(255,255,255,0.25)",borderRadius:"10px",padding:"6px 12px 6px 9px",cursor:"pointer",fontSize:"12.5px",fontWeight:600,color:"white",fontFamily:inter}} onClick={() => handleBackNavigation(navigate, '/dashboard')}><ArrowLeft size={15} color="white"/>Back</button>
+src\app\components\RevenueIntelligenceScreen.tsx:64 -> <button type="button" style={{display:"inline-flex",alignItems:"center",gap:"5px",background:"rgba(255,255,255,0.15)",border:"1px solid rgba(255,255,255,0.25)",borderRadius:"10px",padding:"6px 12px 6px 9px",cursor:"pointer",fontSize:"12.5px",fontWeight:600,color:"white",fontFamily:inter}} onClick={() => handleBackNavigation(navigate, '/dashboard')}><ArrowLeft size={15} color="white"/>Back</button>
+src\app\components\SLATrackerScreen.tsx:65 -> <button type="button" style={{display:"inline-flex",alignItems:"center",gap:"5px",background:"rgba(255,255,255,0.15)",border:"1px solid rgba(255,255,255,0.25)",borderRadius:"10px",padding:"6px 12px 6px 9px",cursor:"pointer",fontSize:"12.5px",fontWeight:600,color:"white",fontFamily:inter}} onClick={() => handleBackNavigation(navigate, '/dashboard')}><ArrowLeft size={15} color="white"/>Back</button>
+src\app\components\ui\BottomNavigation.tsx:106 -> if (route) { navigate(route); onClose(); }
+src\app\components\ui\BottomNavigation.tsx:189 -> if (KEY_ROUTES[key]) navigate(KEY_ROUTES[key]);
+src\app\pages\ForgotPasswordPage.tsx:10 -> return <ForgotPasswordScreen onBack={() => handleBackNavigation(navigate, "/login")} />;
+src\app\pages\NotFoundPage.tsx:31 -> onClick={() => navigate("/login")}
+src\app\pages\RegisterPage.tsx:14 -> onBack={() => handleBackNavigation(navigate, "/login")}
+src\app\pages\RegisterPage.tsx:15 -> onNext={() => navigate("/verify-email")}
+src\app\pages\RegistrationSuccessPage.tsx:15 -> onContinue={() => navigate("/dashboard")}
+src\app\pages\RegistrationSuccessPage.tsx:16 -> onBackToLogin={() => handleBackNavigation(navigate, "/login")}
+src\app\pages\VerifyEmailPage.tsx:15 -> onBack={() => handleBackNavigation(navigate, "/register")}
+src\app\pages\VerifyEmailPage.tsx:16 -> onNext={() => navigate("/registration-success")}

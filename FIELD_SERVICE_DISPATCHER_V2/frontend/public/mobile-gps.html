@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mobile GPS Share</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 24px 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      background: #f1f5f9; color: #0f172a; min-height: 100vh;
+    }
+    .card {
+      max-width: 420px; margin: 0 auto; background: #fff;
+      border: 1px solid #e2e8f0; border-radius: 16px;
+      padding: 28px 22px;
+      box-shadow: 0 4px 20px rgba(15,23,42,.10);
+    }
+    h2 { margin: 0 0 6px; font-size: 1.35rem; font-weight: 700; }
+    .sub { margin: 0 0 22px; font-size: 14px; color: #475569; }
+    .btn {
+      display: block; width: 100%; padding: 15px;
+      border: 0; border-radius: 10px;
+      font-size: 16px; font-weight: 700; cursor: pointer;
+      transition: opacity .15s;
+      background: #0f172a; color: #fff;
+    }
+    .btn:active { opacity: .75; }
+    .btn:disabled { opacity: .5; cursor: not-allowed; }
+    #status {
+      margin-top: 16px; font-size: 13.5px; line-height: 1.55;
+      border-radius: 8px; white-space: pre-wrap;
+    }
+    #status:empty { display: none; }
+    #status.info    { display:block; background:#eff6ff; color:#1d4ed8; padding:12px; }
+    #status.success { display:block; background:#f0fdf4; color:#15803d; padding:12px; }
+    #status.error   { display:block; background:#fff1f2; color:#be123c; padding:12px; }
+    #coords {
+      margin-top: 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 13px;
+      color: #334155;
+      line-height: 1.5;
+    }
+    #coords:empty { display: none; }
+    .steps {
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 6px;
+    }
+    .step {
+      font-size: 12px;
+      color: #64748b;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 7px 10px;
+      background: #f8fafc;
+    }
+    .step-active {
+      border-color: #93c5fd;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-weight: 700;
+    }
+    .step-done {
+      border-color: #86efac;
+      background: #f0fdf4;
+      color: #166534;
+      font-weight: 700;
+    }
+    .step-error {
+      border-color: #fda4af;
+      background: #fff1f2;
+      color: #be123c;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+<div class="card">
+  <h2>Share My Location</h2>
+  <p class="sub">Tap the button to send your phone GPS to the dispatch session.</p>
+  <button class="btn" id="sendBtn" onclick="sendLocation()">Send My Location</button>
+  <ul class="steps" aria-label="Location sharing progress">
+    <li id="step-fetching" class="step">Fetching location...</li>
+    <li id="step-fetched" class="step">Location fetched</li>
+    <li id="step-sending" class="step">Sending to server...</li>
+    <li id="step-success" class="step">Location shared successfully</li>
+  </ul>
+  <div id="coords"></div>
+  <div id="status"></div>
+</div>
+
+<script>
+  var statusEl = document.getElementById('status');
+  var sendBtn  = document.getElementById('sendBtn');
+  var coordsEl = document.getElementById('coords');
+  var sessionId = new URLSearchParams(window.location.search).get('session_id') || '';
+  var stepFetchingEl = document.getElementById('step-fetching');
+  var stepFetchedEl = document.getElementById('step-fetched');
+  var stepSendingEl = document.getElementById('step-sending');
+  var stepSuccessEl = document.getElementById('step-success');
+
+  var steps = {
+    fetching: stepFetchingEl,
+    fetched: stepFetchedEl,
+    sending: stepSendingEl,
+    success: stepSuccessEl,
+  };
+
+  function setStatus(msg, cls) {
+    statusEl.textContent = msg;
+    statusEl.className = cls || '';
+  }
+
+  function clearSteps() {
+    Object.keys(steps).forEach(function (key) {
+      var el = steps[key];
+      if (!el) return;
+      el.className = 'step';
+    });
+  }
+
+  function setStep(stepKey, mode) {
+    clearSteps();
+    var order = ['fetching', 'fetched', 'sending', 'success'];
+    var activeIndex = order.indexOf(stepKey);
+    for (var i = 0; i < order.length; i++) {
+      var key = order[i];
+      var el = steps[key];
+      if (!el) continue;
+      if (mode === 'error' && i === activeIndex) {
+        el.className = 'step step-error';
+      } else if (i < activeIndex) {
+        el.className = 'step step-done';
+      } else if (i === activeIndex) {
+        el.className = mode === 'success' ? 'step step-done' : 'step step-active';
+      }
+    }
+  }
+
+  function clearCoordinates() {
+    coordsEl.textContent = '';
+  }
+
+  function setCoordinates(lat, lng, accuracy) {
+    coordsEl.textContent = 'Lat: ' + lat.toFixed(6) + '\nLng: ' + lng.toFixed(6) + '\nAccuracy: +/-' + Math.round(accuracy) + ' m';
+  }
+
+  function isValidUuid(v) {
+    return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(String(v || ''));
+  }
+
+  function postLocation(currentSessionId, lat, lng, retries, cb) {
+    var payload = JSON.stringify({ session_id: currentSessionId, lat: lat, lng: lng });
+    var attempt = 0;
+
+    function tryOnce() {
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/api/gps/update', true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.timeout = 10000;
+
+      xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          cb(null);
+        } else if (xhr.status === 404 || xhr.status === 410) {
+          cb('Session expired. Please rescan the QR from laptop.');
+        } else {
+          onFail('Server error ' + xhr.status);
+        }
+      };
+      xhr.onerror = function () { onFail('Network error'); };
+      xhr.ontimeout = function () { onFail('Request timed out'); };
+      xhr.send(payload);
+    }
+
+    function onFail(msg) {
+      attempt++;
+      if (attempt <= retries) {
+        setStatus('Retrying (' + attempt + '/' + retries + ')', 'info');
+        setTimeout(tryOnce, 1200);
+      } else {
+        cb(msg);
+      }
+    }
+
+    tryOnce();
+  }
+
+  function sendLocation() {
+    if (!isValidUuid(sessionId)) {
+      setStep('fetching', 'error');
+      setStatus('Invalid or missing session. Please scan a fresh QR from laptop.', 'error');
+      return;
+    }
+
+    // 1. Check for geolocation API existence
+    if (!navigator.geolocation) {
+      setStep('fetching', 'error');
+      setStatus('Geolocation is not supported on this browser.', 'error');
+      return;
+    }
+
+    sendBtn.disabled = true;
+    clearCoordinates();
+    setStep('fetching');
+    setStatus('Fetching location...', 'info');
+
+    navigator.geolocation.getCurrentPosition(
+      function onSuccess(pos) {
+        var lat = pos.coords.latitude;
+        var lng = pos.coords.longitude;
+        var acc = Math.round(pos.coords.accuracy);
+        setStep('fetched');
+        setCoordinates(lat, lng, acc);
+        setStatus('Location fetched. Sending to server...', 'info');
+        setStep('sending');
+
+        postLocation(sessionId, lat, lng, 2, function (err) {
+          sendBtn.disabled = false;
+          if (err) {
+            setStep('sending', 'error');
+            setStatus('Failed to send location: ' + err, 'error');
+          } else {
+            setStep('success', 'success');
+            setStatus('Location shared successfully.\nYou can return to your laptop now.', 'success');
+          }
+        });
+      },
+      function onError(err) {
+        sendBtn.disabled = false;
+        clearCoordinates();
+        if (err.code === 1) {
+          setStep('fetching', 'error');
+          setStatus('Location permission denied. Enable location access and retry.', 'error');
+        } else if (err.code === 2) {
+          setStep('fetching', 'error');
+          setStatus('GPS signal unavailable. Move to a window or open area and retry.', 'error');
+        } else if (err.code === 3) {
+          setStep('fetching', 'error');
+          setStatus('Location request timed out. Please retry.', 'error');
+        } else {
+          setStep('fetching', 'error');
+          setStatus('Failed to fetch location from this device. Please retry.', 'error');
+        }
+      },
+      {
+        enableHighAccuracy: true,
+        maximumAge: 0,
+        timeout: 25000
+      }
+    );
+  }
+
+  if (!isValidUuid(sessionId)) {
+    sendBtn.disabled = true;
+    setStep('fetching', 'error');
+    setStatus('This link is missing a valid session. Scan a fresh QR from laptop.', 'error');
+  } else {
+    clearSteps();
+    setStatus('Session ready. Tap Send My Location.', 'info');
+  }
+</script>
+</body>
+</html>

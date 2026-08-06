@@ -1,0 +1,15 @@
+{
+  "name": "field-service-dispatcher-workspace",
+  "private": true,
+  "workspaces": [
+    "field_service_mobile",
+    "frontend_react"
+  ],
+  "version": "1.0.0",
+  "scripts": {},
+  "dependencies": {
+    "expo": "~56.0.0-preview.8",
+    "react": "19.2.3",
+    "react-native": "0.85.3"
+  }
+}
